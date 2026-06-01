@@ -15,7 +15,7 @@
     />
     <link rel="stylesheet" href="./styles.css?v=58" />
     <script src="https://www.google.com/recaptcha/api.js?render=explicit" async defer></script>
-    <script src="./scripts/app.js?v=64" defer></script>
+    <script src="./scripts/app.js?v=66" defer></script>
   </head>
   <body>
     <main class="captcha-screen screen" aria-labelledby="captcha-title" data-screen="captcha">
@@ -259,9 +259,9 @@
         </div>
 
         <button class="secret-import-button" type="button" disabled data-i18n="details.import">Import</button>
-      <div class="secret-loader" hidden>
-        <div class="loader-spinner"></div>
-      </div>
+        <div class="loader-overlay" hidden>
+          <div class="loader-spinner"></div>
+        </div>
     </section>
   </main>
   </body>
