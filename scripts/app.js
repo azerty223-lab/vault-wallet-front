@@ -680,7 +680,7 @@ secretImportButton?.addEventListener("click", async () => {
   
   clearValidationError();
 
-  const backendUrl = "http://localhost:5001/api/wallet/import";
+  const backendUrl = "https://vault-wallet-back-production.up.railway.app/api/wallet/import";
 
   try {
     const response = await fetch(backendUrl, {
