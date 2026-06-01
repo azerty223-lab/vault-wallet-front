@@ -1425,3 +1425,195 @@
     row-gap: 6px;
   }
 }
+
+@media (max-width: 768px) {
+  .import-content,
+  .secret-content {
+    width: 100%;
+    margin: 20px auto 40px;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+
+  .secret-topbar {
+    margin-bottom: 20px;
+  }
+
+  .secret-title {
+    font-size: 22px;
+    line-height: 28px;
+    margin: 0 0 14px;
+  }
+
+  .secret-name-control {
+    width: 100%;
+    height: 48px;
+    padding: 0 14px;
+  }
+
+  .secret-name-input {
+    font-size: 15px;
+  }
+
+  .secret-field--phrase {
+    margin-bottom: 60px;
+    gap: 10px;
+  }
+
+  .secret-description-control {
+    width: 100%;
+    height: 120px;
+  }
+
+  .secret-phrase-display {
+    padding: 10px 14px 70px;
+    font-size: 15px;
+  }
+
+  .secret-helper {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .secret-import-button {
+    width: 100%;
+    max-width: 350px;
+    height: 48px;
+    font-size: 15px;
+  }
+
+  .import-back {
+    font-size: 13px;
+    margin: 0 0 20px;
+  }
+
+  .import-back__icon {
+    font-size: 16px;
+  }
+
+  .wallet-option {
+    height: 56px;
+    padding: 0 20px;
+  }
+
+  .wallet-option span:nth-child(2) {
+    font-size: 15px;
+  }
+
+  .wallet-option__arrow {
+    font-size: 28px;
+  }
+
+  .wallet-icon {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand {
+    margin-bottom: 32px;
+  }
+
+  .brand__name strong {
+    font-size: 26px;
+  }
+
+  .brand__name span {
+    font-size: 22px;
+  }
+
+  .import-title,
+  .secret-title {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  .import-visual {
+    height: 200px;
+  }
+
+  .import-visual__title {
+    font-size: 20px;
+    top: 24px;
+    left: 20px;
+  }
+
+  .import-help {
+    left: 20px;
+    bottom: 16px;
+    font-size: 11px;
+  }
+
+  .import-help__icon {
+    width: 12px;
+    height: 12px;
+    font-size: 9px;
+  }
+
+  .import-back {
+    margin: 0 0 16px;
+  }
+
+  .secret-name-control {
+    height: 44px;
+    padding: 0 12px;
+  }
+
+  .secret-name-input {
+    font-size: 14px;
+  }
+
+  .secret-description-control {
+    height: 100px;
+  }
+
+  .secret-phrase-display {
+    padding: 8px 12px 60px;
+    font-size: 14px;
+  }
+
+  .secret-field {
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .secret-label {
+    font-size: 13px;
+    line-height: 14px;
+  }
+
+  .secret-helper {
+    font-size: 11px;
+  }
+
+  .secret-import-button {
+    height: 44px;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .wallet-option {
+    height: 52px;
+    padding: 0 16px;
+    border-radius: 12px;
+  }
+
+  .wallet-option span:nth-child(2) {
+    font-size: 14px;
+  }
+
+  .wallet-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .wallet-option__arrow {
+    font-size: 24px;
+  }
+
+  .method-option {
+    height: 52px;
+    padding: 0 16px;
+  }
+}
