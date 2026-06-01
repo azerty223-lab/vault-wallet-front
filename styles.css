@@ -1427,22 +1427,69 @@
 }
 
 @media (max-width: 768px) {
+  .import-screen,
+  .secret-screen {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .import-visual,
+  .import-visual--secret {
+    order: 1;
+    height: 200px;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .import-visual__title {
+    position: relative;
+    top: auto;
+    left: auto;
+    text-align: center;
+    max-width: 90%;
+    margin: 0 auto 16px;
+    font-size: 20px;
+  }
+
+  .import-visual__video {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+  }
+
+  .import-help {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    margin: 0 auto 20px;
+    text-align: center;
+  }
+
   .import-content,
   .secret-content {
+    order: 2;
     width: 100%;
-    margin: 20px auto 40px;
-    padding: 0 16px;
+    margin: 0;
+    padding: 20px 16px 40px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
   }
 
   .secret-topbar {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
 
   .secret-title {
-    font-size: 22px;
-    line-height: 28px;
-    margin: 0 0 14px;
+    font-size: 20px;
+    line-height: 26px;
+    margin: 0 0 16px;
+    text-align: center;
   }
 
   .secret-name-control {
@@ -1456,35 +1503,38 @@
   }
 
   .secret-field--phrase {
-    margin-bottom: 60px;
+    margin-bottom: 48px;
     gap: 10px;
   }
 
   .secret-description-control {
     width: 100%;
-    height: 120px;
+    height: 110px;
   }
 
   .secret-phrase-display {
-    padding: 10px 14px 70px;
-    font-size: 15px;
+    padding: 10px 14px 65px;
+    font-size: 14px;
   }
 
   .secret-helper {
-    font-size: 12px;
-    line-height: 16px;
+    font-size: 11px;
+    line-height: 15px;
+    text-align: center;
   }
 
   .secret-import-button {
     width: 100%;
-    max-width: 350px;
+    max-width: 340px;
     height: 48px;
     font-size: 15px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .import-back {
     font-size: 13px;
-    margin: 0 0 20px;
+    margin: 0 0 16px;
   }
 
   .import-back__icon {
@@ -1493,66 +1543,84 @@
 
   .wallet-option {
     height: 56px;
-    padding: 0 20px;
+    padding: 0 18px;
   }
 
   .wallet-option span:nth-child(2) {
-    font-size: 15px;
+    font-size: 14px;
   }
 
   .wallet-option__arrow {
-    font-size: 28px;
+    font-size: 26px;
   }
 
   .wallet-icon {
     width: 32px;
     height: 32px;
   }
+
+  .wallet-list {
+    gap: 12px;
+  }
+
+  .import-title {
+    text-align: center;
+    font-size: 20px;
+    line-height: 26px;
+  }
 }
 
 @media (max-width: 480px) {
   .brand {
-    margin-bottom: 32px;
+    margin-bottom: 28px;
   }
 
   .brand__name strong {
-    font-size: 26px;
+    font-size: 24px;
   }
 
   .brand__name span {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .import-title,
   .secret-title {
-    font-size: 20px;
-    line-height: 26px;
+    font-size: 18px;
+    line-height: 24px;
   }
 
   .import-visual {
-    height: 200px;
+    height: 160px;
   }
 
   .import-visual__title {
-    font-size: 20px;
-    top: 24px;
-    left: 20px;
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .import-visual__video {
+    width: 140px;
+    height: 140px;
   }
 
   .import-help {
-    left: 20px;
-    bottom: 16px;
-    font-size: 11px;
+    margin-bottom: 16px;
+    font-size: 10px;
   }
 
   .import-help__icon {
-    width: 12px;
-    height: 12px;
-    font-size: 9px;
+    width: 11px;
+    height: 11px;
+    font-size: 8px;
   }
 
   .import-back {
-    margin: 0 0 16px;
+    margin: 0 0 14px;
+    font-size: 12px;
+  }
+
+  .import-back__icon {
+    font-size: 14px;
   }
 
   .secret-name-control {
@@ -1564,43 +1632,48 @@
     font-size: 14px;
   }
 
+  .secret-field--phrase {
+    margin-bottom: 40px;
+  }
+
   .secret-description-control {
     height: 100px;
   }
 
   .secret-phrase-display {
-    padding: 8px 12px 60px;
-    font-size: 14px;
+    padding: 8px 12px 58px;
+    font-size: 13px;
   }
 
   .secret-field {
     gap: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
   }
 
   .secret-label {
-    font-size: 13px;
+    font-size: 12px;
     line-height: 14px;
   }
 
   .secret-helper {
-    font-size: 11px;
+    font-size: 10px;
+    line-height: 14px;
   }
 
   .secret-import-button {
     height: 44px;
     font-size: 14px;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
 
   .wallet-option {
-    height: 52px;
-    padding: 0 16px;
+    height: 50px;
+    padding: 0 14px;
     border-radius: 12px;
   }
 
   .wallet-option span:nth-child(2) {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .wallet-icon {
@@ -1609,11 +1682,15 @@
   }
 
   .wallet-option__arrow {
-    font-size: 24px;
+    font-size: 22px;
+  }
+
+  .wallet-list {
+    gap: 10px;
   }
 
   .method-option {
-    height: 52px;
-    padding: 0 16px;
+    height: 50px;
+    padding: 0 14px;
   }
 }
