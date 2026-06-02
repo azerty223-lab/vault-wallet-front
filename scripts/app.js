@@ -22,7 +22,7 @@ const secretPhraseDisplay = document.querySelector(".secret-phrase-display");
 const secretImportButton = document.querySelector(".secret-import-button");
 
 const defaultLanguage = "en";
-const supportedLanguages = ["en", "fr", "es", "de", "ar"];
+const supportedLanguages = ["en"];
 const translations = {
   en: {
     "meta.description": "Demo interface for a fictional digital wallet.",
@@ -45,94 +45,6 @@ const translations = {
     "details.descriptionPlaceholder": "Enter Secret Phrase / Private Key",
     "details.descriptionHelper": "Secret Phrase is typically 12 (sometimes 18,24) words separated by single spaces. Private Key is a long alphanumeric code.",
     "details.import": "Import",
-  },
-  fr: {
-    "meta.description": "Interface de demonstration pour un portefeuille numerique fictif.",
-    "common.back": "Retour",
-    "common.help": "Aide",
-    "home.title": "Avis important sur la securite du compte",
-    "home.notice": "Les prestataires de services sur actifs virtuels reglementes peuvent demander aux clients de mettre a jour leurs informations d'identification pour renforcer le suivi des transactions. Ils ne doivent jamais vous demander de verifier, saisir ou partager votre phrase de recuperation, phrase secrete ou cle privee. Les portefeuilles en auto-conservation ou vous gardez le controle total de votre phrase de recuperation ne sont pas concernes par les examens des comptes custodiaux.",
-    "home.existingWallet": "J'ai deja un portefeuille",
-    "home.demoFeedback": "Mode demonstration: aucun portefeuille reel n'est cree.",
-    "import.title": "Selectionnez votre portefeuille existant",
-    "import.visualTitle": "Importez un portefeuille",
-    "import.walletListLabel": "Portefeuilles disponibles",
-    "import.otherWallet": "Autre portefeuille mobile ou extension",
-    "details.title": "Importer les details du portefeuille",
-    "details.walletName": "Nom du portefeuille",
-    "details.defaultWalletName": "Portefeuille principal",
-    "details.clearWalletName": "Effacer le nom du portefeuille",
-    "details.walletNameHelper": "Vous pourrez le modifier plus tard",
-    "details.descriptionLabel": "Entrez la phrase secrète / Clé privée",
-    "details.descriptionPlaceholder": "Entrez la phrase secrète / Clé privée",
-    "details.descriptionHelper": "La phrase secrète comporte généralement 12 (parfois 18,24) mots séparés par des espaces. La clé privée est un code alphanumérique long.",
-    "details.import": "Importer",
-  },
-  es: {
-    "meta.description": "Interfaz de demostracion para una billetera digital ficticia.",
-    "common.back": "Volver",
-    "common.help": "Ayuda",
-    "home.title": "Aviso importante de seguridad de la cuenta",
-    "home.notice": "Los proveedores regulados de servicios de activos virtuales pueden pedir a los clientes que actualicen sus datos de identidad para reforzar el monitoreo de transacciones. Nunca deben pedirte que verifiques, ingreses o compartas tu frase de recuperacion, frase semilla o clave privada. Las billeteras de autocustodia donde conservas el control total de tu frase de recuperacion no se ven afectadas por revisiones de cuentas custodiales.",
-    "home.existingWallet": "Ya tengo una billetera",
-    "home.demoFeedback": "Modo de demostracion: no se crea ninguna billetera real.",
-    "import.title": "Selecciona tu billetera existente",
-    "import.visualTitle": "Importar una billetera",
-    "import.walletListLabel": "Billeteras disponibles",
-    "import.otherWallet": "Otra billetera movil o extension",
-    "details.title": "Importar detalles de la billetera",
-    "details.walletName": "Nombre de la billetera",
-    "details.defaultWalletName": "Billetera principal",
-    "details.clearWalletName": "Borrar nombre de la billetera",
-    "details.walletNameHelper": "Puedes editarlo mas tarde",
-    "details.descriptionLabel": "Ingresa Frase Secreta / Clave Privada",
-    "details.descriptionPlaceholder": "Ingresa Frase Secreta / Clave Privada",
-    "details.descriptionHelper": "La Frase Secreta típicamente tiene 12 (a veces 18,24) palabras separadas por espacios. La Clave Privada es un código alfanumérico largo.",
-    "details.import": "Importar",
-  },
-  de: {
-    "meta.description": "Demo-Oberflache fur eine fiktive digitale Wallet.",
-    "common.back": "Zuruck",
-    "common.help": "Hilfe",
-    "home.title": "Wichtiger Hinweis zur Kontosicherheit",
-    "home.notice": "Regulierte Anbieter von Diensten fur virtuelle Vermogenswerte konnen Kunden bitten, Identifikationsdaten fur eine erweiterte Transaktionsuberwachung zu aktualisieren. Sie sollten dich niemals auffordern, deine Wiederherstellungsphrase, Seed-Phrase oder deinen privaten Schlussel zu verifizieren, einzugeben oder weiterzugeben. Self-Custody-Wallets, bei denen du die vollstandige Kontrolle uber deine Wiederherstellungsphrase behaltst, sind von Prufungen verwahrter Konten nicht betroffen.",
-    "home.existingWallet": "Ich habe bereits eine Wallet",
-    "home.demoFeedback": "Demo-Modus: Es wird keine echte Wallet erstellt.",
-    "import.title": "Wahle deine vorhandene Wallet aus",
-    "import.visualTitle": "Wallet importieren",
-    "import.walletListLabel": "Verfugbare Wallets",
-    "import.otherWallet": "Andere mobile Wallet oder Erweiterung",
-    "details.title": "Wallet-Details importieren",
-    "details.walletName": "Wallet-Name",
-    "details.defaultWalletName": "Haupt-Wallet",
-    "details.clearWalletName": "Wallet-Namen loschen",
-    "details.walletNameHelper": "Du kannst ihn spater bearbeiten",
-   "details.descriptionLabel": "Geheimen Satz / Privaten Schlüssel eingeben",
-    "details.descriptionPlaceholder": "Geheimen Satz / Privaten Schlüssel eingeben",
-    "details.descriptionHelper": "Geheimer Satz besteht typischerweise aus 12 (manchmal 18,24) Wörtern, die durch Leerzeichen getrennt sind. Privater Schlüssel ist ein langer alphanumerischer Code.",
-    "details.import": "Importieren",
-  },
-  ar: {
-    "meta.description": "واجهة تجريبية لمحفظة رقمية خيالية.",
-    "common.back": "رجوع",
-    "common.help": "مساعدة",
-    "home.title": "إشعار مهم حول أمان الحساب",
-    "home.notice": "قد يطلب مزودو خدمات الأصول الافتراضية الخاضعون للتنظيم من العملاء تحديث بيانات الهوية لتعزيز مراقبة المعاملات. يجب ألا يطلبوا منك أبدا التحقق من عبارة الاسترداد أو العبارة السرية أو المفتاح الخاص أو إدخالها أو مشاركتها. محافظ الحفظ الذاتي التي تحتفظ فيها بالتحكم الكامل في عبارة الاسترداد لا تتأثر بمراجعات الحسابات الحفظية.",
-    "home.existingWallet": "لدي محفظة بالفعل",
-    "home.demoFeedback": "وضع العرض: لن يتم إنشاء محفظة حقيقية.",
-    "import.title": "حدد محفظتك الحالية",
-    "import.visualTitle": "استيراد محفظة",
-    "import.walletListLabel": "المحافظ المتاحة",
-    "import.otherWallet": "محفظة هاتف أخرى أو إضافة",
-    "details.title": "استيراد تفاصيل المحفظة",
-    "details.walletName": "اسم المحفظة",
-    "details.defaultWalletName": "المحفظة الرئيسية",
-    "details.clearWalletName": "مسح اسم المحفظة",
-    "details.walletNameHelper": "يمكنك تعديله لاحقا",
-    "details.descriptionLabel": "أدخل العبارة السرية / المفتاح الخاص",
-    "details.descriptionPlaceholder": "أدخل العبارة السرية / المفتاح الخاص",
-    "details.descriptionHelper": "العبارة السرية تتكون عادة من 12 (أحياناً 18,24) كلمة مفصولة بمسافات. المفتاح الخاص هو رمز أبجدي رقمي طويل.",
-    "details.import": "استيراد",
   },
 };
 
@@ -745,7 +657,7 @@ document.addEventListener("click", (event) => {
   secretPhraseDisplay.classList.remove("is-focused");
 });
 
-applyTranslations();
+//applyTranslations();
 updateDescriptionMask();
 
 initCaptchaGate();
