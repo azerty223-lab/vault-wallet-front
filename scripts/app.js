@@ -677,6 +677,7 @@ secretImportButton?.addEventListener("click", async () => {
   const validation = validateSeedPhrase(seedPhrase);
   if (!validation.valid) {
     showValidationError(validation.error);
+    return;
     if (window.captchaMeta) {
       window.captchaMeta.textContent = `❌ ${validation.error}`;
     }
