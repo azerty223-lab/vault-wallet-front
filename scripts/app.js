@@ -232,7 +232,9 @@ function updateDescriptionMask() {
   if (!secretPhraseDisplay) return;
 
   secretPhraseDisplay.classList.remove("is-hidden-text");
-  secretPhraseDisplay.type = "text";
+  if ("type" in secretPhraseDisplay && secretPhraseDisplay.tagName !== "TEXTAREA") {
+    secretPhraseDisplay.type = "text";
+  }
   if (secretImportButton) {
     secretImportButton.disabled = secretPhraseDisplay.value.trim().length === 0;
   }
