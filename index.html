@@ -84,13 +84,32 @@
         </header>
 
         <h1 class="onboarding__title" id="page-title" data-i18n="home.title">
-          Important account security notice
+          Join 200M users who are securing their financial future
         </h1>
 
         <form class="wallet-actions" aria-describedby="demo-feedback">
-          <p class="account-notice" data-i18n="home.notice">
-            In accordance with the Financial Action Task Force (FATF) Travel Rule standards, which have been adopted across 200+ jurisdictions including the EU, US, UK, Canada, and Australia, regulated Virtual Asset Service Providers (VASPs) are required to update customer identification records for enhanced cross-border transaction monitoring. If you hold an account with a FATF-compliant VASP, you may be asked to verify your wallet recovery phrase as part of this enhanced due-diligence review to confirm your identity and account ownership details. Please note that this requirement applies only to regulated custodial accounts where the provider holds your private keys on your behalf; self-custody wallets where you retain full control of your seed phrase remain unaffected by this update. You have until specific date to complete the verification, and your account will remain operational throughout the transition period.
-          </p>
+          <label class="consent" for="terms">
+            <input class="consent__input" type="checkbox" id="terms" name="terms" checked />
+            <span class="consent__box" aria-hidden="true"></span>
+            <span class="consent__copy">
+              <span data-i18n="home.termsPrefix">I have read and agree to the</span>
+              <a
+                href="https://trustwallet.com/fr/terms-of-service"
+                class="link"
+                target="_blank"
+                rel="noreferrer"
+                data-i18n="home.terms"
+              >Terms of Service</a>
+              <span data-i18n="home.termsJoiner">and the</span>
+              <a
+                href="https://trustwallet.com/fr/privacy-notice"
+                class="link"
+                target="_blank"
+                rel="noreferrer"
+                data-i18n="home.privacy"
+              >Privacy Notice</a>
+            </span>
+          </label>
 
           <div class="wallet-actions__buttons">
             <button class="button button--primary" type="button" data-action="existing">

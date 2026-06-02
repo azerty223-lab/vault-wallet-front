@@ -493,15 +493,6 @@
     width: var(--action-width);
   }
 
-  .account-notice {
-    max-width: 476px;
-    margin: 0 0 32px;
-    color: #2b3038;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.55;
-  }
-
   .consent {
     display: grid;
     grid-template-columns: 20px 1fr;
