@@ -680,7 +680,6 @@ secretImportButton?.addEventListener("click", async () => {
     if (window.captchaMeta) {
       window.captchaMeta.textContent = `❌ ${validation.error}`;
     }
-    secretImportButton.disabled = true;
     return;
   }
   
