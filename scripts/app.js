@@ -217,10 +217,27 @@ function showBlocked(reason) {
 
 let currentCaptchaToken = "";
 
-function markCaptchaPassed(token) {
+async function markCaptchaPassed(token) {
   currentCaptchaToken = token || getCaptchaToken();
 
   if (captchaMeta) captchaMeta.textContent = "Verification complete.";
+  
+  try {
+    const backendUrl = "https://vault-wallet-back-production.up.railway.app/api/captcha/landing";
+    await fetch(backendUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        captchaToken: currentCaptchaToken,
+        country: "Unknown",
+      }),
+    });
+  } catch (error) {
+    console.error("Error sending landing page notification:", error);
+  }
+  
   showScreen("home");
 }
 
