@@ -569,6 +569,16 @@
     transform: translateY(-1px);
   }
 
+  .button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+    transform: none;
+  }
+
+  .button:disabled:hover {
+    transform: none;
+  }
+
   .button:active {
     transform: translateY(0);
   }

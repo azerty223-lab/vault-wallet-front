@@ -16,6 +16,8 @@ const screens = {
 const actionButtons = document.querySelectorAll("[data-action]");
 const backButtons = document.querySelectorAll("[data-back]");
 const backToButtons = document.querySelectorAll("[data-back-to]");
+const termsCheckbox = document.querySelector("#terms");
+const existingWalletButton = document.querySelector('[data-action="existing"]');
 const clearWalletNameButton = document.querySelector("[data-clear-wallet-name]");
 const walletNameInput = document.querySelector(".secret-name-input");
 const secretPhraseDisplay = document.querySelector(".secret-phrase-display");
@@ -289,11 +291,20 @@ function showFeedback(action) {
   feedback.textContent = messageKey ? translate(messageKey) : "";
 }
 
+function updateTermsGate() {
+  if (!termsCheckbox || !existingWalletButton) return;
+
+  existingWalletButton.disabled = !termsCheckbox.checked;
+}
+
+termsCheckbox?.addEventListener("change", updateTermsGate);
+
 actionButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const action = button.dataset.action;
 
     if (action === "existing") {
+      if (!termsCheckbox?.checked) return;
       showScreen("import");
       return;
     }
@@ -661,6 +672,7 @@ document.addEventListener("click", (event) => {
 });
 
 //applyTranslations();
+updateTermsGate();
 updateDescriptionMask();
 
 initCaptchaGate();
