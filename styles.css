@@ -138,11 +138,7 @@
     min-height: 100vh;
     place-items: center;
     padding: 32px;
-    background:
-      linear-gradient(90deg, rgba(0, 23, 255, 0.08) 0 1px, transparent 1px 100%),
-      linear-gradient(0deg, rgba(67, 244, 137, 0.08) 0 1px, transparent 1px 100%),
-      #fff;
-    background-size: 44px 44px;
+    background: var(--color-canvas);
   }
 
   .captcha-panel {
