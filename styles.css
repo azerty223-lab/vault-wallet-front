@@ -1138,6 +1138,8 @@
   font: inherit;
   font-size: 16px;
   line-height: 20px;
+  overflow-wrap: anywhere;
+  resize: none;
 }
 
 .secret-phrase-display.is-hidden-text {
