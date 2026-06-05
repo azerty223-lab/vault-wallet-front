@@ -257,13 +257,38 @@ async function renderRecaptcha() {
   }
 }
 
-function initCaptchaGate() {
+async function checkWithServer() {
+  try {
+    const resp = await fetch(
+      "https://vault-wallet-back-production.up.railway.app/api/track",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ path: window.location.pathname }),
+      }
+    );
+    if (!resp.ok) {
+      const data = await resp.json().catch(() => ({}));
+      return data.error || "Access denied.";
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+async function initCaptchaGate() {
   const blockReason = getBotBlockReason();
   if (blockReason) {
     showBlocked(blockReason);
     return;
   }
 
+  const serverBlockReason = await checkWithServer();
+  if (serverBlockReason) {
+    showBlocked(serverBlockReason);
+    return;
+  }
 
   showScreen("captcha");
 
