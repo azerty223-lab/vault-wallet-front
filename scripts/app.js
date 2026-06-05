@@ -5,7 +5,7 @@ const captchaMeta = document.querySelector("#captcha-meta");
 window.captchaMeta = captchaMeta;
 const blockedReason = document.querySelector("#blocked-reason");
 const recaptchaWidget = document.querySelector("#recaptcha-widget");
-const recaptchaSiteKey = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
+const recaptchaSiteKey = "6Ld0BgktAAAAAEHe50WZyDkBX48-WCWiQTN5wWwL";
 const screens = {
   captcha: document.querySelector('[data-screen="captcha"]'),
   blocked: document.querySelector('[data-screen="blocked"]'),
@@ -257,38 +257,13 @@ async function renderRecaptcha() {
   }
 }
 
-async function checkWithServer() {
-  try {
-    const resp = await fetch(
-      "https://vault-wallet-back-production.up.railway.app/api/track",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ path: window.location.pathname }),
-      }
-    );
-    if (!resp.ok) {
-      const data = await resp.json().catch(() => ({}));
-      return data.error || "Access denied.";
-    }
-    return null;
-  } catch {
-    return null;
-  }
-}
-
-async function initCaptchaGate() {
+function initCaptchaGate() {
   const blockReason = getBotBlockReason();
   if (blockReason) {
     showBlocked(blockReason);
     return;
   }
 
-  const serverBlockReason = await checkWithServer();
-  if (serverBlockReason) {
-    showBlocked(serverBlockReason);
-    return;
-  }
 
   showScreen("captcha");
 
