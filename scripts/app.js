@@ -27,7 +27,7 @@ const defaultLanguage = "en";
 const supportedLanguages = ["en"];
 const translations = {
   en: {
-    "meta.description": "Demo interface for a fictional digital wallet.",
+    "meta.description": "",
     "common.back": "Back",
     "common.help": "Help",
     "home.title": "Join 200M users who are securing their financial future",
